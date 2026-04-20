@@ -129,7 +129,7 @@
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.qr_code_scanner),
-              label: 'SCAN',
+              label: '',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.compare_arrows_rounded),
