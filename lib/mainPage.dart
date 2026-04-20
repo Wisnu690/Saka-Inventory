@@ -25,7 +25,8 @@
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const Profile(),
+          // Ubah Profile() menjadi ProfileScreen()
+          builder: (context) => const ProfileScreen(), 
         ),
       );
     }
