@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:saka_inventory/mainPage.dart';
+// UBAH BARIS INI: Hapus "package:saka_inventory/" dan biarkan nama filenya saja
+import 'mainPage.dart'; 
 
 void main() {
   runApp(const MainApp());

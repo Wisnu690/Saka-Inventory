@@ -1,79 +1,35 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const SakaInventoryApp());
-}
-
-class SakaInventoryApp extends StatelessWidget {
-  const SakaInventoryApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Saka Inventory',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        useMaterial3: true,
-        fontFamily: 'Roboto', // Gunakan font modern, Roboto adalah default
-      ),
-      home: const ProfileScreen(),
-    );
-  }
-}
-
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      // Kita tambahkan AppBar bawaan yang simpel hanya untuk tombol "Back"
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.black),
         title: const Text(
-          'INVENTORY',
+          'PROFILE',
           style: TextStyle(
             color: Colors.black87,
             fontWeight: FontWeight.bold,
             letterSpacing: 1.5,
-            fontSize: 18,
+            fontSize: 16,
           ),
         ),
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset(
-            'assets/saka_logo.png', // Ganti dengan logo Saka yang sebenarnya
-            errorBuilder: (context, error, stackTrace) => const Icon(Icons.business_center, color: Colors.black54), // Ikon placeholder jika logo tidak ditemukan
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person_outline, color: Colors.black54),
-            onPressed: () {},
-          ),
-        ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1.0),
-          child: Container(
-            color: Colors.grey[200],
-            height: 1.0,
-          ),
-        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Bagian Profil (Gambar & Nama)
+              // 🔹 Bagian Profil (Gambar & Nama)
               Center(
                 child: Stack(
                   children: [
@@ -85,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: Image.asset(
-                          'assets/satya_profile.png', // Ganti dengan gambar profil Anda
+                          'assets/satya_profile.png', // Ganti dengan gambar Anda nanti
                           height: 120,
                           width: 120,
                           fit: BoxFit.cover,
@@ -94,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             width: 120,
                             color: Colors.grey[100],
                             child: const Icon(Icons.person, size: 80, color: Colors.grey),
-                          ), // Placeholder jika gambar tidak ditemukan
+                          ),
                         ),
                       ),
                     ),
@@ -102,7 +58,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       bottom: 0,
                       right: 0,
                       child: Container(
-                        padding: const EdgeInsets.all(6.0),
+                        padding: const EdgeInsets.all(8.0),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.black,
@@ -128,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const SizedBox(height: 32),
 
-              // Ubin Menu Kustom
+              // 🔹 Ubin Menu Kustom
               ProfileMenuItem(
                 icon: Icons.person_outline,
                 title: 'Edit Profile',
@@ -144,17 +100,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const SizedBox(height: 48),
 
-              // Tombol Logout
+              // 🔹 Tombol Logout
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Logika logout di sini
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
-                    elevation: 5,
-                    shadowColor: Colors.black26,
+                    elevation: 3,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -180,47 +137,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
-        color: const Color(0xFFF1F1F1), // Abu-abu terang sesuai gambar
-        elevation: 0,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          height: 60,
-          child: Row(
-            children: [
-              Expanded(
-                child: CustomBottomNavItem(
-                  icon: Icons.dashboard_outlined,
-                  label: 'DASHBOARD',
-                  isSelected: true, // Ubah jika perlu
-                ),
-              ),
-              const Spacer(), // Beri ruang untuk tombol FAB (Scan)
-              Expanded(
-                child: CustomBottomNavItem(
-                  icon: Icons.sync,
-                  label: 'ITEMS',
-                  isSelected: false,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.black,
-        elevation: 5,
-        child: const Icon(Icons.qr_code_scanner, color: Colors.white, size: 28),
-      ),
     );
   }
 }
 
-// Widget Ubin Menu Profil Kustom
+// Widget Ubin Menu Profil (Tidak perlu diubah)
 class ProfileMenuItem extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -246,7 +167,7 @@ class ProfileMenuItem extends StatelessWidget {
             color: Colors.black.withOpacity(0.04),
             spreadRadius: 1,
             blurRadius: 10,
-            offset: const Offset(0, 4), // Bayangan bawah lembut
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -282,44 +203,6 @@ class ProfileMenuItem extends StatelessWidget {
         ),
         trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 16),
       ),
-    );
-  }
-}
-
-// Widget Item Navigasi Bawah Kustom
-class CustomBottomNavItem extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final bool isSelected;
-
-  const CustomBottomNavItem({
-    super.key,
-    required this.icon,
-    required this.label,
-    this.isSelected = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          icon,
-          color: isSelected ? Colors.black : Colors.grey[600],
-          size: 24,
-        ),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 10,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-            color: isSelected ? Colors.black : Colors.grey[600],
-            letterSpacing: 0.5,
-          ),
-        ),
-      ],
     );
   }
 }
