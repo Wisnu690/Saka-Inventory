@@ -58,7 +58,11 @@
                   // 🔹 KIRI (LOGO + TEXT)
                   Row(
                     children: const [
-                      Icon(Icons.inventory_2_outlined),
+                      Image(
+                        image: AssetImage('assets/images/Logo.png'),
+                        width: 50,
+                        height: 50,
+                      ),
                       SizedBox(width: 10),
                       Text(
                         "INVENTORY",
